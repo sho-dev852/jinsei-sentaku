@@ -1,10 +1,18 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function VoteButtons({ postId, onVoted }) {
   const [hasVoted, setHasVoted] = useState(false)
   const [isVoting, setIsVoting] = useState(false)
+
+  // ページ読み込み時に投票済みかチェック
+  useEffect(() => {
+    const voted = localStorage.getItem(`voted_${postId}`)
+    if (voted) {
+      setHasVoted(true)
+    }
+  }, [postId])
 
   const handleVote = async (voteType) => {
     if (hasVoted || isVoting) return
@@ -45,6 +53,9 @@ export default function VoteButtons({ postId, onVoted }) {
         .update({ [columnName]: post[columnName] + 1 })
         .eq('id', postId)
     }
+
+    // localStorageに投票済みを記録
+    localStorage.setItem(`voted_${postId}`, voteType)
 
     setHasVoted(true)
     setIsVoting(false)
