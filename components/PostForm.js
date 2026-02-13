@@ -81,6 +81,9 @@ export default function PostForm({ onPostCreated }) {
           <option value="恋愛">恋愛</option>
           <option value="お金">お金</option>
           <option value="人間関係">人間関係</option>
+          <option value="進学・就職">進学・就職</option>
+          <option value="教育・子育て">教育・子育て</option>
+          <option value="家族">家族</option>
           <option value="住む場所">住む場所</option>
         </select>
       </div>
