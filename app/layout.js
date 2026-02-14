@@ -1,14 +1,22 @@
 import './globals.css'
 
 export const metadata = {
-  title: '人生の選択 投票サイト',
-  description: '匿名で人生の選択を投稿し、他人が投票できるサイト',
+  title: 'Life Judge — あの選択、世間的にはどうなの？',
+  description: '人生の岐路をさらけ出し、世間の審判を仰ぐ。深夜の告解室へようこそ。',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="ambient-glow">{children}</body>
     </html>
   )
 }
